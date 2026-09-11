@@ -1,11 +1,909 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <div class="bg-brand-burgundy-dark text-brand-gold-soft py-2.5 px-4 text-xs font-montserrat tracking-wider border-b border-brand-gold/30">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+        <span>Destacado Internacional: <strong>JMJ Seúl 2027 & Tour Japón</strong> • Asesoría Boutique</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <a href="https://www.instagram.com/doraeprive/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-gold transition-colors flex items-center gap-1">
+          <i class="fab fa-instagram text-brand-gold"></i> @doraeprive
+        </a>
+        <a href="https://www.tiktok.com/@doraepriv" target="_blank" rel="noopener noreferrer" class="hover:text-brand-gold transition-colors flex items-center gap-1">
+          <i class="fab fa-tiktok text-brand-gold"></i> @doraepriv
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-gold/20 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Imagotipo Vectorial Oficial Dorae Privé -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-22 h-22 relative flex items-center justify-center p-2 transition-transform duration-300 group-hover:scale-105">
+          <img src="/logotipo transparente.png" alt="Dorae Privé Logo" class="w-full h-full object-contain" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-cinzel text-xl sm:text-2xl font-extrabold tracking-widest text-brand-burgundy leading-none">
+            DORAE PRIVÉ
+          </span>
+          <span class="font-montserrat text-[10px] tracking-[0.22em] text-brand-gold font-bold uppercase mt-1">
+            Un mundo por conocer
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 font-montserrat text-xs uppercase tracking-wider font-bold">
+        <a href="#destinos" class="text-brand-charcoal hover:text-brand-burgundy transition-colors">Destinos</a>
+        <a href="#experiencias" class="text-brand-charcoal hover:text-brand-burgundy transition-colors">Servicios</a>
+        <a href="#vibe-quiz" class="text-brand-charcoal hover:text-brand-burgundy transition-colors flex items-center gap-1">
+          <span>Quiz Viajero</span>
+          <span class="px-2 py-0.5 text-[9px] bg-brand-gold text-white rounded-full font-bold">Fun</span>
+        </a>
+        <a href="#equipo" class="text-brand-charcoal hover:text-brand-burgundy transition-colors">Equipo</a>
+        <a href="#contacto" class="text-brand-charcoal hover:text-brand-burgundy transition-colors">Contacto</a>
+      </nav>
+
+      <!-- Botón CTA Navegación -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="openQuoteModal()" class="btn-shimmer font-montserrat text-xs uppercase tracking-wider font-bold bg-brand-burgundy hover:bg-brand-burgundy-light text-white px-5 py-2.5 rounded-full shadow-md transition-all transform hover:-translate-y-0.5 border border-brand-gold/40">
+          <i class="fas fa-paper-plane mr-2 text-brand-gold"></i> Cotizar Viaje
+        </button>
+      </div>
+
+      <!-- Botón Menú Móvil -->
+      <button id="mobileMenuBtn" class="md:hidden text-brand-burgundy text-2xl focus:outline-none p-2" aria-label="Abrir Menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-brand-gold/30 px-6 py-5 space-y-4 font-montserrat shadow-lg">
+      <a href="#destinos" class="block text-brand-charcoal hover:text-brand-burgundy font-bold text-sm" onclick="toggleMobileMenu()">Destinos</a>
+      <a href="#experiencias" class="block text-brand-charcoal hover:text-brand-burgundy font-bold text-sm" onclick="toggleMobileMenu()">Servicios</a>
+      <a href="#vibe-quiz" class="block text-brand-charcoal hover:text-brand-burgundy font-bold text-sm" onclick="toggleMobileMenu()">Quiz Viajero 🌟</a>
+      <a href="#equipo" class="block text-brand-charcoal hover:text-brand-burgundy font-bold text-sm" onclick="toggleMobileMenu()">Equipo</a>
+      <a href="#contacto" class="block text-brand-charcoal hover:text-brand-burgundy font-bold text-sm" onclick="toggleMobileMenu()">Contacto</a>
+      <div class="pt-3 border-t border-brand-gold/20">
+        <button onclick="openQuoteModal(); toggleMobileMenu();" class="w-full text-center font-montserrat text-xs uppercase font-bold tracking-wider bg-brand-burgundy text-white py-3 rounded-full">
+          Cotizar Experiencia
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-14 lg:py-20">
+    
+    <!-- Imagen de fondo con overlay -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80" 
+        alt="Playa tropical caribeña" 
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-linear-to-r from-brand-cream via-brand-gold-soft/80 to-brand-cream/0"></div>
+    </div>
+    
+    <!-- Luces y esferas decorativas flotantes -->
+    <div class="absolute top-10 left-8 md:left-24 w-72 h-72 bg-brand-gold/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-10"></div>
+    <div class="absolute bottom-10 right-8 md:right-24 w-80 h-80 bg-brand-burgundy/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow z-10"></div>
+    
+    <!-- Sellos postales flotantes estilo pasaporte -->
+    <div class="absolute -top-4 right-8 lg:right-28 rotate-12 opacity-30 lg:opacity-85 animate-float-slow pointer-events-none">
+      <div class="border-2 border-dashed border-brand-gold p-3 rounded-2xl text-center bg-white/60 backdrop-blur-sm shadow-sm">
+        <p class="font-cinzel text-xs text-brand-burgundy font-bold">PASAPORTE PRIVÉ</p>
+        <p class="font-montserrat text-[9px] text-brand-gold tracking-widest uppercase">Santo Domingo 🇩🇴</p>
+        <span class="text-xs">✈️ VISA & VUELOS</span>
+      </div>
+    </div>
+
+    <div class="absolute bottom-12 left-6 lg:left-20 -rotate-6 opacity-30 lg:opacity-80 animate-float-reverse pointer-events-none">
+      <div class="border-2 border-brand-burgundy/30 p-3 rounded-2xl text-center bg-white/70 shadow-sm">
+        <span class="text-lg">🗼 🌸 🛳️</span>
+        <p class="font-montserrat text-[9px] text-brand-burgundy font-bold">DORAE COMMUNITY</p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Texto Principal de Bienvenida -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-burgundy/5 border border-brand-gold/40 shadow-sm animate-bounce-subtle">
+            <span class="text-brand-burgundy text-sm">✨</span>
+            <span class="font-montserrat text-xs md:text-sm font-bold tracking-wide text-brand-burgundy">
+              Agencia de Viajes
+            </span>
+          </div>
+
+          <h1 class="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-burgundy leading-[1.12] tracking-tight">
+            Diseñamos viajes.<br/>
+            <span class="text-gradient-gold italic font-semibold">Un mundo por conocer.</span>
+          </h1>
+
+          <p class="font-poppins text-brand-charcoal/80 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+            De República Dominicana hacia cualquier rincón del mundo. Combinamos la sofisticación de las mejores navieras, hoteles y circuitos con una atención alegre, humana y sin complicaciones.
+          </p>
+
+          <!-- Pills de Destinos Rápidos para cotización directa -->
+          <div class="pt-1">
+            <p class="font-montserrat text-xs uppercase tracking-widest text-brand-gold font-bold mb-3">
+              ¿A dónde te gustaría escapar?
+            </p>
+            <div class="flex flex-wrap justify-center lg:justify-start gap-2.5">
+              <button onclick="setDreamDestination('JMJ Seúl & Japón 2027')" class="px-4 py-2 rounded-full bg-white hover:bg-brand-burgundy hover:text-white text-brand-charcoal text-xs font-montserrat font-bold shadow-sm border border-brand-gold/30 transition-all transform hover:scale-105">
+                🇰🇷 Seúl & Japón 2027
+              </button>
+              <button onclick="setDreamDestination('Crucero Mundomar Caribe / Europa')" class="px-4 py-2 rounded-full bg-white hover:bg-brand-burgundy hover:text-white text-brand-charcoal text-xs font-montserrat font-bold shadow-sm border border-brand-gold/30 transition-all transform hover:scale-105">
+                🛳️ Cruceros Mundomar
+              </button>
+              <button onclick="setDreamDestination('Europa Clásica')" class="px-4 py-2 rounded-full bg-white hover:bg-brand-burgundy hover:text-white text-brand-charcoal text-xs font-montserrat font-bold shadow-sm border border-brand-gold/30 transition-all transform hover:scale-105">
+                🏛️ Europa Soñada
+              </button>
+              <button onclick="setDreamDestination('Resort de Lujo en Bayahíbe')" class="px-4 py-2 rounded-full bg-white hover:bg-brand-burgundy hover:text-white text-brand-charcoal text-xs font-montserrat font-bold shadow-sm border border-brand-gold/30 transition-all transform hover:scale-105">
+                🌴 Caribe Privé
+              </button>
+            </div>
+          </div>
+
+          <!-- Botones de Acción Hero -->
+          <div class="pt-3 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <button onclick="openQuoteModal()" class="btn-shimmer w-full sm:w-auto px-8 py-3.5 rounded-full bg-brand-burgundy hover:bg-brand-burgundy-light text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-xl transition-all border border-brand-gold/50 flex items-center justify-center gap-3 group">
+              <span>Planificar Mi Viaje</span>
+              <i class="fas fa-arrow-right text-brand-gold group-hover:translate-x-1 transition-transform"></i>
+            </button>
+            
+            <a href="https://wa.me/18498512412?text=Hola%20Dorae%20Privé!%20Me%20gustaría%20información%20para%20un%20viaje." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white hover:bg-brand-gold-soft text-brand-burgundy font-montserrat font-bold text-xs uppercase tracking-wider border-2 border-brand-gold shadow-sm transition-all flex items-center justify-center gap-2">
+              <i class="fab fa-whatsapp text-green-600 text-lg"></i>
+              <span>WhatsApp Agencia</span>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="lg:col-span-5 relative flex justify-center">
+          
+          <div class="absolute -top-8 -right-8 w-72 h-72 rounded-full border border-dashed border-brand-gold/40 animate-spin-compass pointer-events-none"></div>
+
+          <div class="relative w-full max-w-md glass-card p-8 rounded-3xl shadow-2xl border-2 border-brand-gold/40 overflow-hidden transform hover:-translate-y-2 transition-transform duration-500">
+            
+            <div class="absolute top-0 right-0 bg-gradient-prive text-brand-gold-soft font-montserrat text-[10px] font-bold tracking-widest px-4 py-1.5 rounded-bl-xl uppercase border-b border-l border-brand-gold/40">
+              Edición 2026-2027
+            </div>
+
+            <div class="text-center pt-3 pb-2">
+              <div class="w-32 h-32 mx-auto relative flex items-center justify-center mb-4">
+                <img src="/logotipo transparente.png" alt="Dorae Privé Logo" class="w-full h-full object-contain drop-shadow-md" />
+              </div>
+
+              <h2 class="font-cinzel text-2xl font-bold text-brand-burgundy tracking-wider mb-1">DORAE PRIVÉ</h2>
+              <p class="font-montserrat text-xs text-brand-gold font-bold tracking-[0.2em] uppercase mb-4">
+                Un mundo por conocer
+              </p>
+              
+              <div class="bg-brand-cream/90 border border-brand-gold/30 rounded-2xl p-4 text-left space-y-2 mb-4">
+                <div class="flex items-center justify-between text-xs font-montserrat">
+                  <span class="text-brand-muted font-medium">Asesoría de Viajes:</span>
+                  <span class="text-brand-burgundy font-bold">100% Personalizada</span>
+                </div>
+                <div class="flex items-center justify-between text-xs font-montserrat">
+                  <span class="text-brand-muted font-medium">Especialidad:</span>
+                  <span class="text-brand-burgundy font-bold">Logística Masiva & Lujo</span>
+                </div>
+                <div class="flex items-center justify-between text-xs font-montserrat">
+                  <span class="text-brand-muted font-medium">Sede:</span>
+                  <span class="text-brand-charcoal font-semibold">Santo Domingo, RD 🇩🇴</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between bg-white rounded-xl p-2.5 border border-brand-gold/20 shadow-inner">
+                <div class="flex items-center gap-2">
+                  <span class="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-burgundy font-bold text-xs">
+                    ✈️
+                  </span>
+                  <div class="text-left">
+                    <p class="text-[11px] font-bold font-montserrat text-brand-charcoal">¿Listo para despegar?</p>
+                    <p class="text-[10px] text-brand-muted">Te asesoramos paso a paso</p>
+                  </div>
+                </div>
+                <button onclick="openQuoteModal()" class="text-xs bg-brand-burgundy hover:bg-brand-burgundy-light text-white font-montserrat font-bold px-3.5 py-1.5 rounded-lg transition-colors">
+                  Vamos
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="vibe-quiz" class="py-20 bg-white relative border-y border-brand-gold/20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-brand-gold font-montserrat text-xs uppercase tracking-widest font-bold block mb-2">
+          Dinámica Interactiva
+        </span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-brand-burgundy mb-3">
+          Descubre tu Próximo Destino en 3 Clics
+        </h2>
+        <p class="font-poppins text-brand-muted text-sm sm:text-base">
+          Elige con quién vas y qué vibra prefieres; te armamos la recomendación ideal al instante.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border-2 border-brand-gold/30 shadow-xl relative overflow-hidden">
+        
+        <!-- Barra de progreso -->
+        <div class="w-full bg-brand-gold-soft rounded-full h-2.5 mb-8">
+          <div id="quizProgressBar" class="bg-gradient-prive h-2.5 rounded-full transition-all duration-500" style="width: 33%;"></div>
+        </div>
+
+        <!-- Paso 1 -->
+        <div id="quizStep1" class="quiz-step space-y-6">
+          <h3 class="font-cinzel text-xl font-bold text-brand-burgundy text-center">
+            Paso 1: ¿Con qué tripulación viajas?
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <button onclick="selectQuizOption('crew', 'Solo / En Pareja', 2)" class="p-6 rounded-2xl border-2 border-brand-gold/20 hover:border-brand-burgundy bg-brand-cream/60 hover:bg-brand-burgundy hover:text-white transition-all text-center group">
+              <span class="text-4xl block mb-2 group-hover:scale-110 transition-transform">🥂</span>
+              <p class="font-montserrat font-bold text-sm">En Pareja / Relax</p>
+              <p class="text-xs opacity-75 mt-1">Escapadas románticas y descanso</p>
+            </button>
+            <button onclick="selectQuizOption('crew', 'Familia / Amigos', 2)" class="p-6 rounded-2xl border-2 border-brand-gold/20 hover:border-brand-burgundy bg-brand-cream/60 hover:bg-brand-burgundy hover:text-white transition-all text-center group">
+              <span class="text-4xl block mb-2 group-hover:scale-110 transition-transform">🎉</span>
+              <p class="font-montserrat font-bold text-sm">Familia / Amigos</p>
+              <p class="text-xs opacity-75 mt-1">Diversión, parques o playas</p>
+            </button>
+            <button onclick="selectQuizOption('crew', 'Gran Grupo / JMJ Seúl 2027', 2)" class="p-6 rounded-2xl border-2 border-brand-gold/20 hover:border-brand-burgundy bg-brand-cream/60 hover:bg-brand-burgundy hover:text-white transition-all text-center group">
+              <span class="text-4xl block mb-2 group-hover:scale-110 transition-transform">✈️</span>
+              <p class="font-montserrat font-bold text-sm">Grupo Grande / Evento</p>
+              <p class="text-xs opacity-75 mt-1">+20 personas o JMJ Seúl</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div id="quizStep2" class="quiz-step hidden space-y-6">
+          <h3 class="font-cinzel text-xl font-bold text-brand-burgundy text-center">
+            Paso 2: ¿Qué estilo buscas para esta aventura?
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <button onclick="selectQuizOption('vibe', 'Cultura, Templos & Asia', 3)" class="p-6 rounded-2xl border-2 border-brand-gold/20 hover:border-brand-burgundy bg-brand-cream/60 hover:bg-brand-burgundy hover:text-white transition-all text-center group">
+              <span class="text-4xl block mb-2 group-hover:scale-110 transition-transform">🏯</span>
+              <p class="font-montserrat font-bold text-sm">Cultura & Exotismo</p>
+              <p class="text-xs opacity-75 mt-1">Japón, Corea del Sur, Turquía</p>
+            </button>
+            <button onclick="selectQuizOption('vibe', 'Playa de Lujo & All-Inclusive', 3)" class="p-6 rounded-2xl border-2 border-brand-gold/20 hover:border-brand-burgundy bg-brand-cream/60 hover:bg-brand-burgundy hover:text-white transition-all text-center group">
+              <span class="text-4xl block mb-2 group-hover:scale-110 transition-transform">🏖️</span>
+              <p class="font-montserrat font-bold text-sm">Caribe All-Inclusive</p>
+              <p class="text-xs opacity-75 mt-1">Bayahíbe, Punta Cana, Cancún</p>
+            </button>
+            <button onclick="selectQuizOption('vibe', 'Crucero o Ciudades Europeas', 3)" class="p-6 rounded-2xl border-2 border-brand-gold/20 hover:border-brand-burgundy bg-brand-cream/60 hover:bg-brand-burgundy hover:text-white transition-all text-center group">
+              <span class="text-4xl block mb-2 group-hover:scale-110 transition-transform">🛳️</span>
+              <p class="font-montserrat font-bold text-sm">Crucero o Europa</p>
+              <p class="text-xs opacity-75 mt-1">Mundomar, Italia, Francia, España</p>
+            </button>
+          </div>
+          <div class="text-center pt-2">
+            <button onclick="setQuizStep(1)" class="text-xs text-brand-muted hover:text-brand-burgundy font-montserrat font-bold">
+              ← Volver al paso anterior
+            </button>
+          </div>
+        </div>
+
+        <!-- Paso 3: Resultado -->
+        <div id="quizStep3" class="quiz-step hidden text-center space-y-6">
+          <div class="w-16 h-16 mx-auto bg-brand-gold/20 rounded-full flex items-center justify-center text-brand-burgundy text-3xl animate-bounce">
+            🎉
+          </div>
+          <h3 class="font-cinzel text-2xl font-bold text-brand-burgundy">
+            ¡Hemos encontrado tu experiencia perfecta!
+          </h3>
+          <div id="quizResultSummary" class="p-6 bg-brand-cream rounded-2xl border border-brand-gold/40 max-w-xl mx-auto text-left"></div>
+          <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+            <a id="quizWhatsAppBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-shimmer px-8 py-3.5 rounded-full bg-brand-burgundy hover:bg-brand-burgundy-light text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
+              <i class="fab fa-whatsapp text-brand-gold text-base"></i>
+              <span>Enviar a Débora o Pablo por WhatsApp</span>
+            </a>
+            <button onclick="resetQuiz()" class="px-6 py-3.5 rounded-full border border-brand-gold text-brand-burgundy font-montserrat font-bold text-xs uppercase">
+              Reiniciar Test
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="destinos" class="py-24 bg-brand-cream relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <span class="text-brand-gold font-montserrat text-xs uppercase tracking-widest font-bold block mb-2">
+            Catálogo Seleccionado
+          </span>
+          <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-brand-burgundy">
+            Experiencias con el Sello Privé
+          </h2>
+        </div>
+        <p class="font-poppins text-brand-charcoal/70 text-sm max-w-md">
+          Rutas diseñadas con traslados privados, hoteles minuciosamente verificados y asistencia dedicada en español.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Tarjeta 1: JMJ Seúl & Tour Japón 2027 -->
+        <div class="glass-card rounded-3xl overflow-hidden border border-brand-gold/40 shadow-xl group hover:-translate-y-2 transition-all duration-300 flex flex-col">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=900&q=80" 
+              alt="Seúl y Tokio" 
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-brand-burgundy text-brand-gold-soft font-montserrat text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full border border-brand-gold/40">
+              Gran Grupo / Evento Masivo
+            </span>
+            <span class="absolute bottom-4 left-4 text-white font-cinzel text-xl font-bold">
+              Corea del Sur & Japón 2027
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <p class="text-xs text-brand-charcoal/80 leading-relaxed font-poppins">
+              Nuestra especialidad insigne: coordinación integral para más de 115 personas a la <strong>Jornada Mundial de la Juventud (JMJ) Seúl 2027</strong> con extensión cultural a <strong>Tokio y Kioto</strong>. Vuelos, visados, chárter privado y bloqueos garantizados.
+            </p>
+            <div class="pt-2 border-t border-brand-gold/20 flex items-center justify-between">
+              <span class="text-[11px] font-montserrat font-bold text-brand-gold">Capacidad Grupal & Logística</span>
+              <button onclick="openQuoteModal('JMJ Seúl & Japón 2027')" class="text-xs font-montserrat font-bold text-brand-burgundy hover:text-brand-burgundy-light flex items-center gap-1">
+                <span>Cotizar</span> <i class="fas fa-chevron-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Cruceros Mundomar -->
+        <div class="glass-card rounded-3xl overflow-hidden border border-brand-gold/40 shadow-xl group hover:-translate-y-2 transition-all duration-300 flex flex-col">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=900&q=80" 
+              alt="Cruceros Mundomar" 
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-brand-gold text-brand-burgundy-dark font-montserrat text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full">
+              Alta Mar & Confort
+            </span>
+            <span class="absolute bottom-4 left-4 text-white font-cinzel text-xl font-bold">
+              Cruceros Mundomar & Caribe
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <p class="text-xs text-brand-charcoal/80 leading-relaxed font-poppins">
+              Despierta cada día en un puerto distinto: Islas Griegas, Mediterráneo Occidental o aguas turquesas del Caribe. Camarotes con balcón, paquetes de bebidas y excursiones en tierra coordinadas.
+            </p>
+            <div class="pt-2 border-t border-brand-gold/20 flex items-center justify-between">
+              <span class="text-[11px] font-montserrat font-bold text-brand-gold">Todo Incluido a Bordo</span>
+              <button onclick="openQuoteModal('Cruceros Mundomar')" class="text-xs font-montserrat font-bold text-brand-burgundy hover:text-brand-burgundy-light flex items-center gap-1">
+                <span>Cotizar</span> <i class="fas fa-chevron-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Bayahíbe & Caribe Privé -->
+        <div class="glass-card rounded-3xl overflow-hidden border border-brand-gold/40 shadow-xl group hover:-translate-y-2 transition-all duration-300 flex flex-col">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80" 
+              alt="Resort Caribeño" 
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-white/90 text-brand-burgundy font-montserrat text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full border border-brand-burgundy/30">
+              Caribe & Resorts
+            </span>
+            <span class="absolute bottom-4 left-4 text-white font-cinzel text-xl font-bold">
+              Bayahíbe & Escapadas Locales
+            </span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <p class="text-xs text-brand-charcoal/80 leading-relaxed font-poppins">
+              Pasa días de sol en catamarán privado hacia Isla Saona, con traslados directos y tarifas preferenciales en resorts de lujo en Bayahíbe y Punta Cana para familias y grupos de amigos.
+            </p>
+            <div class="pt-2 border-t border-brand-gold/20 flex items-center justify-between">
+              <span class="text-[11px] font-montserrat font-bold text-brand-gold">Tarifas Agente TAAP</span>
+              <button onclick="openQuoteModal('Escapada Bayahíbe / Caribe')" class="text-xs font-montserrat font-bold text-brand-burgundy hover:text-brand-burgundy-light flex items-center gap-1">
+                <span>Cotizar</span> <i class="fas fa-chevron-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experiencias" class="py-24 bg-brand-burgundy text-brand-gold-soft relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-gold font-montserrat text-xs uppercase tracking-widest font-bold block mb-3">
+          Soporte & Alianzas
+        </span>
+        <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-white mb-5">
+          ¿Por Qué Elegir Dorae Privé?
+        </h2>
+        <p class="font-poppins text-brand-gold-soft/80 text-sm sm:text-base leading-relaxed">
+          No solo emitimos boletos; blindamos la experiencia de inicio a fin con plataformas internacionales y atención 24/7.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="glass-dark p-6 rounded-2xl border border-brand-gold/30 hover:border-brand-gold transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold text-2xl mb-4">
+            <i class="fas fa-users-cog"></i>
+          </div>
+          <h3 class="font-cinzel text-lg font-bold text-white mb-2">Logística Grupal</h3>
+          <p class="text-xs text-brand-gold-soft/75 font-poppins leading-relaxed">
+            Coordinación de grupos de más de 100 personas: bloqueos aéreos, traslados privados y distribución de habitaciones sin errores.
+          </p>
+        </div>
+
+        <div class="glass-dark p-6 rounded-2xl border border-brand-gold/30 hover:border-brand-gold transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold text-2xl mb-4">
+            <i class="fas fa-ship"></i>
+          </div>
+          <h3 class="font-cinzel text-lg font-bold text-white mb-2">Expedia & Cruceros</h3>
+          <p class="text-xs text-brand-gold-soft/75 font-poppins leading-relaxed">
+            Acceso a tarifas preferenciales en cadenas hoteleras de 4 y 5 estrellas, autos de alquiler y navieras líderes vía Mundomar.
+          </p>
+        </div>
+
+        <div class="glass-dark p-6 rounded-2xl border border-brand-gold/30 hover:border-brand-gold transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold text-2xl mb-4">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="font-cinzel text-lg font-bold text-white mb-2">Seguros de Viaje</h3>
+          <p class="text-xs text-brand-gold-soft/75 font-poppins leading-relaxed">
+            Pólizas completas con InterMundial: asistencia médica en el extranjero, coberturas de cancelación y soporte de equipaje.
+          </p>
+        </div>
+
+        <div class="glass-dark p-6 rounded-2xl border border-brand-gold/30 hover:border-brand-gold transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-brand-gold/20 flex items-center justify-center text-brand-gold text-2xl mb-4">
+            <i class="fas fa-map-marked-alt"></i>
+          </div>
+          <h3 class="font-cinzel text-lg font-bold text-white mb-2">Tours en Español</h3>
+          <p class="text-xs text-brand-gold-soft/75 font-poppins leading-relaxed">
+            Excursiones guiadas con Civitatis: entradas anticipadas sin filas para monumentos y actividades auténticas en cada destino.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="equipo" class="py-24 bg-white relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-brand-gold font-montserrat text-xs uppercase tracking-widest font-bold block mb-2">
+          Atención Humana & Cercana
+        </span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-brand-burgundy mb-4">
+          Conoce a tus Asesores Dorae Privé
+        </h2>
+        <p class="font-poppins text-brand-charcoal/75 text-sm sm:text-base">
+          En Dorae Privé tratas directamente con nosotros. Diseñamos cada detalle para que disfrutes sin preocupaciones.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        
+        <!-- Tarjeta Débora Colón -->
+        <div class="glass-card rounded-3xl p-8 border-2 border-brand-gold/40 shadow-lg text-center relative group hover:border-brand-burgundy transition-all">
+          <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-brand-burgundy/10 border-2 border-brand-gold flex items-center justify-center text-brand-burgundy text-3xl font-cinzel font-bold shadow-inner group-hover:scale-105 transition-transform">
+            DC
+          </div>
+          <h3 class="font-cinzel text-2xl font-bold text-brand-burgundy">Débora Colón</h3>
+          <p class="font-montserrat text-xs uppercase tracking-wider text-brand-gold font-bold mb-3">CEO & Lead Travel Designer</p>
+          <p class="font-poppins text-xs text-brand-charcoal/80 mb-6 leading-relaxed">
+            Curaduría de itinerarios exclusivos, estructuración de presupuestos, alianzas internacionales y atención personalizada para cada cliente.
+          </p>
+          <div class="space-y-2 pt-4 border-t border-brand-gold/20 font-montserrat text-xs">
+            <a href="tel:+18295989972" class="flex items-center justify-center gap-2 text-brand-charcoal hover:text-brand-burgundy font-medium py-1">
+              <i class="fas fa-phone-alt text-brand-gold"></i> +1 (829) 598-9972
+            </a>
+            <a href="https://wa.me/18295989972?text=Hola%20Débora!%20Quisiera%20conversar%20sobre%20un%20viaje%20con%20Dorae%20Privé." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-brand-burgundy hover:bg-brand-burgundy-light text-white font-bold text-xs uppercase transition-colors">
+              <i class="fab fa-whatsapp text-brand-gold"></i> Chatear con Débora
+            </a>
+          </div>
+        </div>
+
+        <!-- Tarjeta Pablo Díaz -->
+        <div class="glass-card rounded-3xl p-8 border-2 border-brand-gold/40 shadow-lg text-center relative group hover:border-brand-burgundy transition-all">
+          <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-brand-burgundy/10 border-2 border-brand-gold flex items-center justify-center text-brand-burgundy text-3xl font-cinzel font-bold shadow-inner group-hover:scale-105 transition-transform">
+            PD
+          </div>
+          <h3 class="font-cinzel text-2xl font-bold text-brand-burgundy">Pablo Díaz</h3>
+          <p class="font-montserrat text-xs uppercase tracking-wider text-brand-gold font-bold mb-3">Logística & Coordinación de Grupos</p>
+          <p class="font-poppins text-xs text-brand-charcoal/80 mb-6 leading-relaxed">
+            Seguimiento operativo, coordinación de listas de pasajeros, traslados terrestres y soporte logístico durante los viajes.
+          </p>
+          <div class="space-y-2 pt-4 border-t border-brand-gold/20 font-montserrat text-xs">
+            <a href="tel:+18097795503" class="flex items-center justify-center gap-2 text-brand-charcoal hover:text-brand-burgundy font-medium py-1">
+              <i class="fas fa-phone-alt text-brand-gold"></i> +1 (809) 779-5503
+            </a>
+            <a href="https://wa.me/18097795503?text=Hola%20Pablo!%20Quisiera%20coordinar%20detalles%20de%20un%20viaje%20con%20Dorae%20Privé." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-brand-gold hover:bg-brand-gold-light text-brand-burgundy font-bold text-xs uppercase transition-colors">
+              <i class="fab fa-whatsapp text-brand-burgundy"></i> Chatear con Pablo
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contacto" class="py-24 bg-brand-cream relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Info de contacto -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-brand-gold font-montserrat text-xs uppercase tracking-widest font-bold block">
+            Hablemos de tu Próxima Aventura
+          </span>
+          <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-brand-burgundy">
+            Empieza a empacar. Nosotros nos encargamos de todo.
+          </h2>
+          <p class="font-poppins text-sm text-brand-charcoal/80 leading-relaxed">
+            Te asesoramos con precisión y calidez en Santo Domingo o de manera remota para tus viajes nacionales e internacionales.
+          </p>
+
+          <div class="space-y-4 pt-2 font-montserrat text-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-burgundy/10 flex items-center justify-center text-brand-burgundy">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <p class="text-[11px] text-brand-muted uppercase font-bold">Correo Oficial</p>
+                <a href="mailto:doraeprive@gmail.com" class="font-semibold text-brand-charcoal hover:text-brand-burgundy">
+                  doraeprive@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-brand-burgundy/10 flex items-center justify-center text-brand-burgundy">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <p class="text-[11px] text-brand-muted uppercase font-bold">Ubicación</p>
+                <p class="font-semibold text-brand-charcoal">Santo Domingo, República Dominicana</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Redes Sociales -->
+          <div class="pt-4 flex gap-4">
+            <a href="https://www.instagram.com/doraeprive/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white border border-brand-gold/30 shadow-sm flex items-center justify-center text-brand-burgundy hover:bg-brand-burgundy hover:text-white transition-all transform hover:scale-110" aria-label="Instagram">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://www.tiktok.com/@doraepriv" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white border border-brand-gold/30 shadow-sm flex items-center justify-center text-brand-burgundy hover:bg-brand-burgundy hover:text-white transition-all transform hover:scale-110" aria-label="TikTok">
+              <i class="fab fa-tiktok text-xl"></i>
+            </a>
+            <a href="https://wa.me/18295989972" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white border border-brand-gold/30 shadow-sm flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-all transform hover:scale-110" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp text-xl"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Formulario Interactivo -->
+        <div class="lg:col-span-7">
+          <div class="glass-card rounded-3xl p-8 sm:p-10 border-2 border-brand-gold/40 shadow-xl">
+            <h3 class="font-cinzel text-2xl font-bold text-brand-burgundy mb-2">Solicita tu Cotización Privé</h3>
+            <p class="font-poppins text-xs text-brand-muted mb-6">Completa los datos y te responderemos de inmediato.</p>
+            
+            <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-4 font-poppins">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-montserrat font-bold text-brand-charcoal uppercase tracking-wider mb-1">Nombre Completo</label>
+                  <input type="text" id="leadName" required placeholder="Ej. Carla Méndez" class="w-full px-4 py-3 rounded-xl border border-brand-gold/30 focus:outline-none focus:border-brand-burgundy text-sm bg-white" />
+                </div>
+                <div>
+                  <label class="block text-xs font-montserrat font-bold text-brand-charcoal uppercase tracking-wider mb-1">Teléfono / WhatsApp</label>
+                  <input type="tel" id="leadPhone" required placeholder="+1 (829) 000-0000" class="w-full px-4 py-3 rounded-xl border border-brand-gold/30 focus:outline-none focus:border-brand-burgundy text-sm bg-white" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-montserrat font-bold text-brand-charcoal uppercase tracking-wider mb-1">Destino de Interés</label>
+                  <input type="text" id="leadDestination" required placeholder="Ej. Japón 2027, Crucero, Europa..." class="w-full px-4 py-3 rounded-xl border border-brand-gold/30 focus:outline-none focus:border-brand-burgundy text-sm bg-white" />
+                </div>
+                <div>
+                  <label class="block text-xs font-montserrat font-bold text-brand-charcoal uppercase tracking-wider mb-1">Pasajeros</label>
+                  <select id="leadPax" class="w-full px-4 py-3 rounded-xl border border-brand-gold/30 focus:outline-none focus:border-brand-burgundy text-sm bg-white">
+                    <option value="1 a 2 personas">1 - 2 personas (Pareja / Solo)</option>
+                    <option value="3 a 6 personas">3 - 6 personas (Familia / Amigos)</option>
+                    <option value="7 a 20 personas">7 - 20 personas (Grupo Pequeño)</option>
+                    <option value="Grupo Masivo (+20)">+20 personas (Grupo Grande / JMJ)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-montserrat font-bold text-brand-charcoal uppercase tracking-wider mb-1">Detalles o Preferencias</label>
+                <textarea id="leadNotes" rows="3" placeholder="Fechas tentativas, categoría de hotel deseada o actividades preferidas..." class="w-full px-4 py-3 rounded-xl border border-brand-gold/30 focus:outline-none focus:border-brand-burgundy text-sm bg-white"></textarea>
+              </div>
+
+              <button type="submit" class="btn-shimmer w-full py-4 rounded-full bg-brand-burgundy hover:bg-brand-burgundy-light text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-xl transition-all border border-brand-gold/40 flex items-center justify-center gap-2">
+                <span>Enviar Solicitud a Débora & Pablo</span>
+                <i class="fas fa-paper-plane text-brand-gold"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="bg-brand-burgundy-dark text-brand-gold-soft py-14 border-t-2 border-brand-gold/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 items-start mb-12">
+        
+        <div class="md:col-span-2 space-y-4">
+          <div class="w-100 h-20 flex justify-start">
+            <!-- Logotipo Negativo / Monograma en Blanco -->
+            <img src="/Imagotipo_3_Blanco.png" alt="Dorae Privé Logo" class="object-left" />
+          </div>
+          
+          <p class="font-poppins text-xs text-brand-gold-soft/75 max-w-md leading-relaxed">
+            Agencia de viajes boutique especializada en experiencias a medida, cruceros y coordinación logística grupal. Afiliada a Archer Travel Service.
+          </p>
+        </div>
+
+        <div class="space-y-2 font-montserrat text-xs">
+          <p class="text-white font-bold uppercase tracking-wider mb-2">Contacto Directo</p>
+          <p class="text-brand-gold-soft/85">📧 doraeprive@gmail.com</p>
+          <p class="text-brand-gold-soft/85">📞 Débora: +1 (829) 598-9972</p>
+          <p class="text-brand-gold-soft/85">📞 Pablo: +1 (809) 779-5503</p>
+          <p class="text-brand-gold-soft/85">📍 Santo Domingo, Rep. Dominicana</p>
+        </div>
+
+        <div class="space-y-3 font-montserrat text-xs">
+          <p class="text-white font-bold uppercase tracking-wider mb-2">Canales Oficiales</p>
+          <a href="https://www.instagram.com/doraeprive/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-brand-gold transition-colors">
+            <i class="fab fa-instagram text-brand-gold"></i> @doraeprive
+          </a>
+          <a href="https://www.tiktok.com/@doraepriv" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-brand-gold transition-colors">
+            <i class="fab fa-tiktok text-brand-gold"></i> @doraepriv
+          </a>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-brand-gold/20 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-gold-soft/60 font-montserrat gap-4">
+        <p>© 2026 Dorae Privé. Todos los derechos reservados.</p>
+        <p class="flex items-center gap-1">
+          Santo Domingo, República Dominicana 🇩🇴 ✈️ 🌍
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <div id="quoteModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-card w-full max-w-lg rounded-3xl p-6 sm:p-8 border-2 border-brand-gold shadow-2xl relative">
+      <button onclick="closeQuoteModal()" class="absolute top-4 right-4 text-brand-muted hover:text-brand-burgundy text-xl p-2" aria-label="Cerrar modal">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 mx-auto rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-burgundy text-xl mb-2">
+          ✈️
+        </div>
+        <h3 class="font-cinzel text-2xl font-bold text-brand-burgundy">Cotiza tu Viaje</h3>
+        <p class="font-montserrat text-xs text-brand-gold font-semibold uppercase tracking-wider">Atención directa por Débora o Pablo</p>
+      </div>
+
+      <div class="space-y-4 font-poppins">
+        <div>
+          <label class="block text-xs font-montserrat font-bold text-brand-charcoal uppercase mb-1">Destino sugerido</label>
+          <input type="text" id="modalDest" class="w-full px-4 py-2.5 rounded-xl border border-brand-gold/30 text-sm focus:border-brand-burgundy focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-montserrat font-bold text-brand-charcoal uppercase mb-1">Tu Nombre</label>
+          <input type="text" id="modalName" placeholder="Tu nombre y apellido" class="w-full px-4 py-2.5 rounded-xl border border-brand-gold/30 text-sm focus:border-brand-burgundy focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-montserrat font-bold text-brand-charcoal uppercase mb-1">¿Con quién prefieres hablar?</label>
+          <div class="grid grid-cols-2 gap-3 font-montserrat text-xs">
+            <label class="flex items-center gap-2 p-3 border rounded-xl cursor-pointer hover:border-brand-burgundy has-[:checked]:border-brand-burgundy has-[:checked]:bg-brand-burgundy/5">
+              <input type="radio" name="advisor" value="debora" checked class="accent-brand-burgundy" />
+              <div>
+                <p class="font-bold text-brand-burgundy">Débora Colón</p>
+                <p class="text-[10px] text-brand-muted">CEO / Reservas</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-2 p-3 border rounded-xl cursor-pointer hover:border-brand-burgundy has-[:checked]:border-brand-burgundy has-[:checked]:bg-brand-burgundy/5">
+              <input type="radio" name="advisor" value="pablo" class="accent-brand-burgundy" />
+              <div>
+                <p class="font-bold text-brand-burgundy">Pablo Díaz</p>
+                <p class="text-[10px] text-brand-muted">Logística Grupal</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button onclick="sendModalWhatsApp()" class="btn-shimmer w-full py-3.5 rounded-full bg-brand-burgundy text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp text-brand-gold text-base"></i>
+          <span>Contactar por WhatsApp</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toastMessage" class="fixed bottom-6 right-6 z-50 hidden max-w-sm bg-brand-burgundy text-white p-4 rounded-2xl shadow-2xl border border-brand-gold flex items-center gap-3 transition-all duration-300">
+    <div class="text-brand-gold text-2xl">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="font-poppins text-xs">
+      <p id="toastTitle" class="font-bold font-montserrat text-white"></p>
+      <p id="toastBody" class="text-brand-gold-soft"></p>
+    </div>
+  </div>
+
+  <script>
+    let quizState = { crew: '', vibe: '' };
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    if (mobileBtn) {
+      mobileBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    function setQuizStep(step) {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+      const activeEl = document.getElementById(`quizStep${step}`);
+      if (activeEl) activeEl.classList.remove('hidden');
+      
+      const bar = document.getElementById('quizProgressBar');
+      if (bar) {
+        bar.style.width = step === 1 ? '33%' : (step === 2 ? '66%' : '100%');
+      }
+    }
+
+    function selectQuizOption(category, value, nextStep) {
+      quizState[category] = value;
+      if (nextStep === 3) {
+        showQuizResult();
+      }
+      setQuizStep(nextStep);
+    }
+
+    function showQuizResult() {
+      const summaryBox = document.getElementById('quizResultSummary');
+      const waBtn = document.getElementById('quizWhatsAppBtn');
+      
+      let recommendation = "";
+      if (quizState.crew.includes("Gran Grupo") || quizState.vibe.includes("Cultura")) {
+        recommendation = "<strong>Corea del Sur (JMJ 2027) & Extensión a Japón</strong>: Expedición grupal completa, templos ancestrales y gastronomía única.";
+      } else if (quizState.vibe.includes("Playa")) {
+        recommendation = "<strong>Resort All-Inclusive de Lujo en Bayahíbe</strong>: Catamarán privado a Saona, descanso y comodidades de alta gama.";
+      } else {
+        recommendation = "<strong>Crucero Mundomar o Circuito Europa</strong>: Descubre múltiples destinos con itinerario resuelto y máximo confort.";
+      }
+
+      summaryBox.innerHTML = `
+        <p class="text-xs font-montserrat text-brand-gold font-bold uppercase mb-1">Recomendación a tu medida:</p>
+        <p class="text-sm text-brand-charcoal mb-3">${recommendation}</p>
+        <div class="text-[11px] text-brand-muted border-t border-brand-gold/20 pt-2 flex flex-wrap gap-3">
+          <span>👥 Grupo: <strong>${quizState.crew}</strong></span>
+          <span>✨ Estilo: <strong>${quizState.vibe}</strong></span>
+        </div>
+      `;
+
+      const msg = encodeURIComponent(`¡Hola Dorae Privé! Completé el Quiz en su web y me recomendó: ${quizState.crew} (${quizState.vibe}). Quisiera conocer opciones.`);
+      waBtn.href = `https://wa.me/18295989972?text=${msg}`;
+    }
+
+    function resetQuiz() {
+      quizState = { crew: '', vibe: '' };
+      setQuizStep(1);
+    }
+
+    function openQuoteModal(defaultDest = "Mi Viaje Soñado") {
+      document.getElementById('modalDest').value = defaultDest;
+      document.getElementById('quoteModal').classList.remove('hidden');
+    }
+
+    function closeQuoteModal() {
+      document.getElementById('quoteModal').classList.add('hidden');
+    }
+
+    function setDreamDestination(dest) {
+      openQuoteModal(dest);
+    }
+
+    function sendModalWhatsApp() {
+      const dest = document.getElementById('modalDest').value || "Destino general";
+      const name = document.getElementById('modalName').value || "Viajero";
+      const selectedAdvisor = document.querySelector('input[name="advisor"]:checked').value;
+      
+      const phone = selectedAdvisor === 'debora' ? '18295989972' : '18097795503';
+      const advisorName = selectedAdvisor === 'debora' ? 'Débora' : 'Pablo';
+
+      const message = encodeURIComponent(`Hola ${advisorName}, soy ${name}. Estuve revisando la web de Dorae Privé y me interesa cotizar una experiencia para: ${dest}.`);
+      
+      window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+      closeQuoteModal();
+      showToast("¡Enlace generado!", "Te redirigimos al WhatsApp de Dorae Privé.");
+    }
+
+    function handleLeadSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('leadName').value;
+      const phone = document.getElementById('leadPhone').value;
+      const dest = document.getElementById('leadDestination').value;
+      const pax = document.getElementById('leadPax').value;
+      const notes = document.getElementById('leadNotes').value;
+
+      const text = encodeURIComponent(
+        `*Nueva Solicitud Web - Dorae Privé*\n` +
+        `👤 Nombre: ${name}\n` +
+        `📱 Teléfono: ${phone}\n` +
+        `📍 Destino: ${dest}\n` +
+        `👥 Pasajeros: ${pax}\n` +
+        `📝 Notas: ${notes || 'Sin notas adicionales'}` 
+      );
+
+      showToast("¡Solicitud enviada!", "Abriendo WhatsApp para que Débora y Pablo te atiendan.");
+      setTimeout(() => {
+        window.open(`https://wa.me/18295989972?text=${text}`, '_blank');
+      }, 700);
+
+      event.target.reset();
+    }
+
+    function showToast(title, body) {
+      const toast = document.getElementById('toastMessage');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastBody').textContent = body;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+    }
+  </script>
 </Layout>

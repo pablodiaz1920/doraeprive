@@ -1,1 +1,116 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand-burgundy: #800020;
+  --color-brand-burgundy-dark: #560015;
+  --color-brand-burgundy-light: #9e092d;
+  --color-brand-gold: #AE914E;
+  --color-brand-gold-light: #cfb474;
+  --color-brand-gold-soft: #F7F3E9;
+  --color-brand-cream: #FDFAF4;
+  --color-brand-charcoal: #1A1819;
+  --color-brand-muted: #7A7578;
+
+  --font-cinzel: 'Cinzel', serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+
+  --animate-float-slow: float 6s ease-in-out infinite;
+  --animate-float-reverse: floatRev 7s ease-in-out infinite;
+  --animate-pulse-glow: pulseGlow 3s ease-in-out infinite;
+  --animate-spin-compass: spinCompass 45s linear infinite;
+  --animate-bounce-subtle: bounceSubtle 2.5s infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1.5deg); }
+}
+
+@keyframes floatRev {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(12px) rotate(-1.5deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
+
+@keyframes spinCompass {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounceSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Estilos personalizados adicionales */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FDFAF4;
+  color: #1A1819;
+  overflow-x: hidden;
+}
+
+.font-cinzel { font-family: 'Cinzel', serif; }
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+.bg-gradient-prive {
+  background: linear-gradient(135deg, #800020 0%, #560015 100%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #AE914E 0%, #ecd79b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(174, 145, 78, 0.3);
+}
+
+.glass-dark {
+  background: rgba(86, 0, 21, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(174, 145, 78, 0.35);
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(30deg);
+  transition: all 0.75s ease;
+}
+
+.btn-shimmer:hover::after {
+  left: 130%;
+}
+
+/* Clases helper para fuentes */
+.font-cinzel { font-family: 'Cinzel', serif; }
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
+.font-poppins { font-family: 'Poppins', sans-serif; }
+
+/* Clases helper para animaciones */
+.animate-float-slow { animation: float 6s ease-in-out infinite; }
+.animate-float-reverse { animation: floatRev 7s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+.animate-spin-compass { animation: spinCompass 45s linear infinite; }
+.animate-bounce-subtle { animation: bounceSubtle 2.5s infinite; }
